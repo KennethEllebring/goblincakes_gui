@@ -1,0 +1,116 @@
+//////// IMPORTS /////////
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+//////// COLOR AND STYLE SCHEMA ///////
+$main-body-color: #121212;
+$body-color: #1A1A1A;
+$main-text-color: #FFF;
+$link-color: #FFF;
+$link-hover-color: #00ff00;
+$link-decoration: none;
+$link-hover-decoration: none;
+
+body {
+          //////// HEADER ////////
+          font-family: 'Roboto', sans-serif;
+          color: $main-text-color;
+          background-color: $main-body-color;
+          .herobanner {
+                    text-align: center;
+                    h1 {
+                              color:#4CAF50;
+                    }
+          }
+          .navbar-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    position: sticky;
+                    top: 0;
+                    z-index: 1000;
+                    .navbar {
+                              background-color: $main-body-color;
+                              color: $main-text-color;
+                              font-size: larger;
+                              display: flex;
+                              justify-content: center;
+                              width: 100%;
+                              box-shadow: 0 3px 12px 1px #000;
+                              a {
+                                        svg {
+                                                  margin-right: 0.5rem;
+                                        }
+                                        // border-left: 1px solid $main-body-color;
+                                        // border-right: 1px solid $main-body-color;
+                                        color: $link-color;
+                                        text-decoration: $link-decoration;
+                                        padding: 1rem;
+                                        width: 160px;
+                                        text-align: center;
+                                        // background-color: #3C763D; /* Goblin green */
+                                        cursor: pointer;
+                                        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+                                        &:hover, &:focus {
+                                                  background-color: #4CAF50; /* A lighter shade of goblin green */
+                                                  box-shadow: 0 0 20px #4CAF50; /* Adding a glowing effect */
+                                                  transform: translateY(-2px); /* Slight lift */
+                                        }
+                                        &:active {
+                                                  transform: translateY(1px); /* Pressed effect */
+                                                  box-shadow: 0 0 15px #3C763D; /* Deeper shadow when pressed */
+                                        }
+                              }
+                    }
+          }
+          //////// MAIN ////////
+          .img-slider-wrapper {
+                    position: relative;
+                    width: 80%;
+                    left: 10%;
+                    margin-top: 2rem;
+                    .img-slider {
+                              height: 300px;
+                              img {
+                                        height: 100%;
+                                        object-fit: contain;
+                              }
+                    }
+          }
+          .home {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 2rem;
+                    margin-top: 2rem;
+                    height: 200px;
+                    .content {
+                              width: 80%;
+                              background-color: $body-color;
+                              box-shadow: 0 3px 12px 1px #000;
+                              .news {
+                                        padding: 2rem;
+                                        .card {
+                                                  display:flex;
+                                                  padding: 1rem;
+                                                  border: 2px solid $main-body-color;
+                                                  border-radius: 8px;
+                                                  margin-bottom: 2rem;
+                                                  .card-img {
+
+                                                  }
+                                                  .card-info {
+                                                            margin-left: 2rem;
+                                                            .card-header {
+                                                                      
+                                                            }
+                                                            .card-text {
+                                                                      
+                                                            }
+                                                  }
+                                        }
+                              }
+                    }
+          }
+}
