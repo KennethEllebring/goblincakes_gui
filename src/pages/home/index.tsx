@@ -6,8 +6,7 @@ const Home = () => {
     return (
         <>
             <ImgGallery />
-
-            <main className="home">
+            <main className="home-wrapper">
                 <div className="content">
                     <section className="news">
                         <News />

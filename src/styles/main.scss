@@ -8,8 +8,7 @@
 $main-body-color: #121212;
 $body-color: #1A1A1A;
 $main-text-color: #FFF;
-$link-color: #FFF;
-$link-hover-color: #00ff00;
+$accent-color: #4CAF50;
 $link-decoration: none;
 $link-hover-decoration: none;
 
@@ -21,7 +20,7 @@ body {
           .herobanner {
                     text-align: center;
                     h1 {
-                              color:#4CAF50;
+                              color: $accent-color;
                     }
           }
           .navbar-wrapper {
@@ -39,32 +38,37 @@ body {
                               width: 100%;
                               box-shadow: 0 3px 12px 1px #000;
                               a {
+                                        
                                         svg {
                                                   margin-right: 0.5rem;
                                         }
-                                        // border-left: 1px solid $main-body-color;
-                                        // border-right: 1px solid $main-body-color;
-                                        color: $link-color;
+                                        color: $main-text-color;
                                         text-decoration: $link-decoration;
                                         padding: 1rem;
                                         width: 160px;
                                         text-align: center;
-                                        // background-color: #3C763D; /* Goblin green */
                                         cursor: pointer;
                                         transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-                                        &:hover, &:focus {
-                                                  background-color: #4CAF50; /* A lighter shade of goblin green */
-                                                  box-shadow: 0 0 20px #4CAF50; /* Adding a glowing effect */
-                                                  transform: translateY(-2px); /* Slight lift */
+                                        &:hover {
+                                                  background-color: $accent-color;
+                                                  box-shadow: 0 0 20px $accent-color;
+                                                  transform: translateY(-2px);
                                         }
                                         &:active {
-                                                  transform: translateY(1px); /* Pressed effect */
-                                                  box-shadow: 0 0 15px #3C763D; /* Deeper shadow when pressed */
+                                                  transform: translateY(1px);
+                                                  box-shadow: 0 0 15px #3C763D;
                                         }
+                                        &.active-link {
+                                                  color: #fff;
+                                                  background-color: $accent-color;
+                                                  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+                                        }
+                                                  
                               }
                     }
           }
-          //////// MAIN ////////
+
+          //////// MAIN WINDOW ////////
           .img-slider-wrapper {
                     position: relative;
                     width: 80%;
@@ -78,13 +82,12 @@ body {
                               }
                     }
           }
-          .home {
+          .home-wrapper {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 2rem;
                     margin-top: 2rem;
-                    height: 200px;
+                    margin-bottom: 4rem;
                     .content {
                               width: 80%;
                               background-color: $body-color;
@@ -94,7 +97,7 @@ body {
                                         .card {
                                                   display:flex;
                                                   padding: 1rem;
-                                                  border: 2px solid $main-body-color;
+                                                  border: 1px dotted #3C763D;
                                                   border-radius: 8px;
                                                   margin-bottom: 2rem;
                                                   .card-img {
@@ -106,11 +109,123 @@ body {
                                                                       
                                                             }
                                                             .card-text {
-                                                                      
+                                                                      color: #818080;
                                                             }
                                                   }
                                         }
                               }
+                    }
+          }
+          .team-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-top: 2rem;
+                    margin-bottom: 4rem;
+                    .team {
+                              display: flex;
+                              width: 80%;
+                              background-color: $body-color;
+                              box-shadow: 0 3px 12px 1px #000; 
+                              justify-content: center;
+                              padding-bottom: 2rem;
+                              .left-team-wrapper {
+                                        display: flex;
+                                        flex-direction: column;
+                                        flex-wrap: wrap;
+                                        width: 500px;
+                                        .team-card {
+                                                  .team-info-card-wrapper {
+                                                            display: flex;
+                                                            flex-wrap: wrap;
+                                                            gap: 2rem;
+                                                            .team-info-card {
+                                                                      display: flex;
+                                                                      flex-direction: column;
+                                                                      img {  
+                                                                                width: 200px;
+                                                                      }
+                                                                      .team-info {
+                                                                                display: flex;
+                                                                                justify-content: space-between;
+                                                                      }
+                                                            }
+                                                  }
+                                        }
+                              }
+                              .right-team-wrapper {
+                                        display: flex;
+                                        flex-direction: column;
+                                        flex-wrap: wrap;
+                                        width: 700px;
+                                        .team-card{
+                                                  .team-info-card-wrapper {
+                                                            display: flex;
+                                                            flex-wrap: wrap;
+                                                            gap: 2rem;
+                                                            .team-info-card {
+                                                                      display: flex;
+                                                                      flex-direction: column;
+                                                                      img {  
+                                                                                width: 200px;
+                                                                      }
+                                                                      .team-info {
+                                                                                display: flex;
+                                                                                justify-content: space-between;
+                                                                      }
+                                                            }
+                                                  }
+                                        }
+                              }
+                    }
+          }
+          .raid-wrapper{
+                    
+          }
+          .application-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-top: 2rem;
+                    .application {
+                              display: flex;
+                              width: 80%;
+                              background-color: $body-color;
+                              box-shadow: 0 3px 12px 1px #000; 
+                              justify-content: center;
+                              .application-form {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        margin-top: 1rem;
+                                        .question-card {
+                                                  .question-card-header {
+                                                            color: $accent-color;
+                                                            margin-bottom: 0.5rem;
+                                                  }
+                                                  .question-card-question {
+                                                            color: #818080;
+                                                            margin: 0;
+                                                  }
+                                                  .question-card-input {
+                                                            font-size: large;
+                                                            width: 400px;
+                                                  }
+                                        }
+                                        .application-button {
+                                                  background-color: $accent-color;
+                                                  width: 200px;
+                                                  height: 40px;
+                                                  border-radius: 20px;
+                                                  border: none;
+                                                  cursor: pointer;
+                                                  margin-top: 2rem;
+                                                  margin-bottom: 4rem;
+                                                  &:hover {
+                                                            border: 2px solid black;
+                                                  }
+                                        }
+                              }         
                     }
           }
 }
