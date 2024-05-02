@@ -1,0 +1,34 @@
+.dashboard-nav {
+          background-color: $main-body-color;
+          color: $main-text-color;
+          font-size: larger;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          box-shadow: 0 3px 12px 1px #000;
+          a {                      
+              svg {
+                  margin-right: 0.5rem;
+              }
+              color: $main-text-color;
+              text-decoration: $link-decoration;
+              width: 160px;
+              text-align: center;
+              cursor: pointer;
+              transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+              &:hover {
+                  background-color: $accent-color;
+                  box-shadow: 0 0 20px $accent-color;
+                  transform: translateY(-2px);
+              }
+              &:active {
+                  transform: translateY(1px);
+                  box-shadow: 0 0 15px #3C763D;
+              }
+              &.active-link {
+                  color: #fff;
+                  background-color: $accent-color;
+                  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+              }                                           
+          }
+}

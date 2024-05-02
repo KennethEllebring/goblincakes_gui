@@ -1,0 +1,62 @@
+.add-edit-wrapper {
+          background-color: $main-body-color;
+          width: 1000px;
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: $shadow-strong;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          border: 1px dotted $accent-color;
+          transform: translate(-50%, -50%);
+          z-index: 1000;
+          .add-edit-header {
+                    display: flex;
+                    justify-content: space-between;
+          }
+          form {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    .img-url {
+                              background-color: $body-color;
+                              color: $darker-text-color;
+                              font-family: 'Roboto', sans-serif;
+                    }
+                    .text-wrapper {
+                              display: flex;
+                              flex-direction: column;
+                              gap: 1rem;
+                              width: 100%;
+                              height: 200px;
+                              input {
+                                        background-color: $body-color;
+                                        color: $accent-color;
+                                        font-family: 'Roboto', sans-serif;
+                                        font-size: large;
+                              }
+                              textarea {
+                                        background-color: $body-color;
+                                        color: $darker-text-color;
+                                        font-family: 'Roboto', sans-serif;
+                                        font-size: medium;
+                                        height: 200px;
+                              }
+                    }
+          }
+          .add-edit-buttons {
+                    display: flex;
+                    justify-content: end;
+                    gap: 1rem;
+                    padding-top: 1rem;
+          }
+}
+
+@media (max-width: 600px) {
+          .add-edit-wrapper {
+                    width: 90%;
+                    box-sizing: border-box;
+          }
+}
+      

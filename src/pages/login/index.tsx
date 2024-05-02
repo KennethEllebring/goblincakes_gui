@@ -1,18 +1,41 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useAuth } from "../../components/auth/authContext";
 
 const Login = () => {
-    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const { login } = useAuth();
 
-    const handleLogin = () => {
-        localStorage.setItem("user", "loggedIn");
-        navigate("/dashboard");
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        login(username, password);
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <button onClick={handleLogin}>Log In</button>
+        <div className="login-wrapper">
+            <div className="login">
+                <form onSubmit={handleLogin}>
+                    <label>
+                        Användarnamn:
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Lösenord:
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </label>
+                    <button className="login-button" type="submit">
+                        Logga in
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

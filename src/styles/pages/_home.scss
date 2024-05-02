@@ -1,0 +1,43 @@
+.home-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          .content {
+              width: 80%;
+              background-color: $body-color;
+              box-shadow: $shadow-strong;
+              .news {
+                  padding: 2rem;
+                  .card {
+                      display: flex;
+                      align-items: center;
+                      padding: 1rem;
+                      box-shadow: $shadow-light;
+                      border-radius: 8px;
+                      margin-bottom: 2rem;
+                      .card-img-box {
+                          display: flex;
+                          align-items: center;
+                          background-color: #000;
+                          max-height: 200px;
+                          img {
+                              width: 200px;
+                              height: 200px;
+                              object-fit: contain;
+                          }
+                      }
+                      .card-info {
+                          margin-left: 2rem;
+                          .card-header {
+                              color: $accent-color;                             
+                          }
+                          .card-text {
+                          color: $darker-text-color;
+                          }
+                      }
+                  }
+              }
+          }
+      }

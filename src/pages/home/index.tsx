@@ -6,13 +6,13 @@ const Home = () => {
     return (
         <>
             <ImgGallery />
-            <main className="home-wrapper">
+            <div className="home-wrapper">
                 <div className="content">
                     <section className="news">
                         <News />
                     </section>
                 </div>
-            </main>
+            </div>
         </>
     );
 };

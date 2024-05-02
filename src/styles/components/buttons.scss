@@ -1,0 +1,77 @@
+.edit-button {
+          color: $button-text-color;
+          background-color: $button-color;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: background-color 0.3s ease;
+          &:hover {
+                    background-color: $button-hover-color;
+                    cursor: pointer;
+          }
+          &:active {
+                    transform: scale(0.95);
+          }
+}
+
+.save-button {
+          color: $button-text-color;
+          background-color: $button-color;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: background-color 0.3s ease;
+          &:hover {
+                    background-color: $button-hover-color;
+                    cursor: pointer;
+          }
+          &:active {
+                    transform: scale(0.95);
+          }
+}
+
+.cancel-button {
+          color: $button-text-color;
+          background-color: $button-delete-color;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: background-color 0.3s ease;
+          &:hover {
+                    background-color: $button-delete-hover-color;
+                    cursor: pointer;
+          }
+          &:active {
+                    transform: scale(0.95);
+          }
+} 
+
+.delete-button {
+          color: $button-text-color;
+          background-color: $button-delete-color;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: background-color 0.3s ease;
+          &:hover {
+                    background-color: $button-delete-hover-color;
+                    cursor: pointer;
+          }
+          &:active {
+                    transform: scale(0.95);
+          }
+}
+
+.x-button {
+          color: $button-delete-color;
+          background-color: $color-invisible;
+          font-size: xx-large;
+          border: none;
+          &:hover{
+                    cursor: pointer;
+          }
+}

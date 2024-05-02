@@ -1,0 +1,48 @@
+.application-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
+          .application {
+              display: flex;
+              width: 80%;
+              background-color: $body-color;
+              box-shadow: $shadow-strong; 
+              justify-content: center;
+              .application-form {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  margin-top: 1rem;
+                  .question-card {
+                      .question-card-header {
+                          color: $accent-color;
+                          margin-bottom: 0.5rem;
+                      }
+                      .question-card-question {
+                          color: $darker-text-color;
+                          margin: 0;
+                      }
+                      .question-card-input {
+                          font-size: large;
+                          width: 400px;
+                      }
+                  }
+                  .application-button {
+                      background-color: $accent-color;
+                      color: $main-text-color;
+                      font-size: large;
+                      width: 200px;
+                      height: 40px;
+                      border-radius: 20px;
+                      border: none;
+                      cursor: pointer;
+                      margin-top: 2rem;
+                      margin-bottom: 4rem;
+                      &:hover {
+                          border: 2px solid black;
+                      }
+                  }
+              }         
+          }
+}

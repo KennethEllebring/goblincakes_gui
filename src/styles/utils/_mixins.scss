@@ -1,0 +1,23 @@
+@mixin box-shadow($shadow-color) {
+          box-shadow: 0 3px 12px 1px $shadow-color;
+}
+      
+@mixin flex-center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+}
+      
+@mixin interactive-link {
+          transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+          &:hover {
+              background-color: $accent-color;
+              box-shadow: 0 0 20px $accent-color;
+              transform: translateY(-2px);
+          }
+          &:active {
+              transform: translateY(1px);
+              box-shadow: 0 0 15px darken($accent-color, 20%);
+          }
+}
+      

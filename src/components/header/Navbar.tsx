@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/authContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHouse,
@@ -7,10 +8,21 @@ import {
     faDungeon,
     faPenToSquare,
     faLock,
+    faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
-    // Function to determine the class based on the isActive boolean
+    const { username, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async (
+        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => {
+        e.preventDefault();
+        await logout();
+        navigate("/login");
+    };
+
     const getActiveClass = (isActive: boolean) =>
         isActive ? "active-link" : "";
 
@@ -46,13 +58,37 @@ const NavBar = () => {
                     <FontAwesomeIcon icon={faPenToSquare} />
                     ANSÖKAN
                 </NavLink>
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) => getActiveClass(isActive)}
-                >
-                    <FontAwesomeIcon icon={faLock} />
-                    LOGIN
-                </NavLink>
+                {username ? (
+                    <>
+                        <NavLink
+                            to="/dashboard"
+                            className={({ isActive }) =>
+                                getActiveClass(isActive)
+                            }
+                        >
+                            <FontAwesomeIcon icon={faLockOpen} />
+                            DASHBOARD
+                        </NavLink>
+                        <NavLink
+                            to="/login"
+                            onClick={handleLogout}
+                            className={({ isActive }) =>
+                                getActiveClass(isActive)
+                            }
+                        >
+                            <FontAwesomeIcon icon={faLockOpen} />
+                            LOGGA UT
+                        </NavLink>
+                    </>
+                ) : (
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) => getActiveClass(isActive)}
+                    >
+                        <FontAwesomeIcon icon={faLock} />
+                        LOGGA IN
+                    </NavLink>
+                )}
             </nav>
         </div>
     );

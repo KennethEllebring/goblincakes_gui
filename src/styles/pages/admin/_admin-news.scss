@@ -1,0 +1,67 @@
+.admin-news {
+            padding: 2rem;
+            .admin-news-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
+                h2 {
+                    margin: 0;
+                    padding: 0;
+                }
+                button {
+                    color: $button-text-color;
+                    background-color: $button-color;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        background-color: $button-hover-color;
+                        cursor: pointer;
+                    }
+                    &:active {
+                        transform: scale(0.95);
+                    }
+                }
+            }
+            .outer-card {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                box-shadow: 0 0px 6px 0px #000;
+                border-radius: 8px;
+                margin-bottom: 2rem;
+                padding: 5px;
+                .admin-news-settings {
+                    display: flex;
+                    gap: 5px;
+                }
+                .inner-card {
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;
+                    .card-img-box {
+                        display: flex;
+                        align-items: center;
+                        background-color: #000;
+                        max-height: 200px;
+                        img {
+                            width: 200px;
+                            height: 200px;
+                            object-fit: contain;
+                        }
+                    }
+                    .card-info {
+                        margin-left: 2rem;
+                        .card-header { 
+                            color: $accent-color;     
+                        }
+                        .card-text {
+                            color: $darker-text-color;
+                        }
+                    }
+              }
+          }
+}

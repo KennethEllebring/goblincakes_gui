@@ -1,0 +1,65 @@
+.team-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          .team {
+              display: flex;
+              width: 80%;
+              background-color: $body-color;
+              box-shadow: $shadow-strong; 
+              justify-content: center;
+              padding-bottom: 2rem;
+              .left-team-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  flex-wrap: wrap;
+                  width: 500px;
+                  .team-card {
+                      .team-info-card-wrapper {
+                          display: flex;
+                          flex-wrap: wrap;
+                          gap: 2rem;
+                          .team-info-card {
+                              display: flex;
+                              flex-direction: column;
+                              img {  
+                                  width: 200px;
+                                  height: 200px;
+                                  object-fit: contain;
+                              }
+                              .team-info {
+                                  display: flex;
+                                  justify-content: space-between;
+                              }
+                          }
+                      }
+                  }
+              }
+              .right-team-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  flex-wrap: wrap;
+                  width: 700px;
+                  .team-card{
+                     .team-info-card-wrapper {
+                          display: flex;
+                          flex-wrap: wrap;
+                          gap: 2rem;
+                          .team-info-card {
+                              display: flex;
+                              flex-direction: column;
+                              img {  
+                                  width: 200px;
+                              }
+                              .team-info {
+                                  display: flex;
+                                  justify-content: space-between;
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }

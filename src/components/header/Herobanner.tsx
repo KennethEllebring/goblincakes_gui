@@ -1,13 +1,10 @@
 import React from "react";
-import guildLogo from "../../assets/logo192.png";
+import guildLogo from "../../assets/goblinLogo.webp";
 
 const HeroBanner = () => {
     return (
         <div className="herobanner">
-            <div>
-                <img src={guildLogo} alt="Guildlogo" />
-                <h1>GOBLINCAKES</h1>
-            </div>
+            <img src={guildLogo} alt="Guildlogo" />
         </div>
     );
 };

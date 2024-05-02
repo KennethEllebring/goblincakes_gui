@@ -1,0 +1,14 @@
+.dashboard-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
+          .dashboard {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              width: 80%;
+              background-color: $body-color;
+              box-shadow: $shadow-strong; 
+          }
+}

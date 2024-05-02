@@ -1,0 +1,28 @@
+.raid-wrapper{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          .raid {
+              display: flex;
+              justify-content: space-around;
+              width: 80%;
+              background-color: $body-color;
+              box-shadow: $shadow-strong;
+              padding-bottom: 2rem;
+              .progress {
+                  width: 300px;
+                  background-color: $light-body-color;
+                  border-radius: 4px;
+                  .progress-bar {
+                      height: 20px;
+                      background-color: $accent-color;
+                      border-radius: 4px;
+                      text-align: center;
+                      line-height: 20px;
+                      color: $main-text-color;
+                  }
+              }
+          }
+}
