@@ -11,9 +11,7 @@ import Login from "./pages/login";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Dashboard from "./pages/dashboard";
 import Profile from "./pages/dashboard/userpages/UserProfile";
-import Stats from "./pages/dashboard/adminpages/AdminStats";
 import News from "./pages/dashboard/adminpages/AdminNews/AdminNews";
-import Admin from "./pages/dashboard/adminpages/Admin";
 import Applications from "./pages/dashboard/adminpages/AdminApplications";
 import NotFound from "./pages/notfound/NotFound";
 import "./styles/main.scss";
@@ -69,26 +67,10 @@ const App = () => {
                                 }
                             />
                             <Route
-                                path="stats"
-                                element={
-                                    <PrivateRoute>
-                                        <Stats />
-                                    </PrivateRoute>
-                                }
-                            />
-                            <Route
                                 path="news"
                                 element={
                                     <PrivateRoute>
                                         <News />
-                                    </PrivateRoute>
-                                }
-                            />
-                            <Route
-                                path="admin"
-                                element={
-                                    <PrivateRoute>
-                                        <Admin />
                                     </PrivateRoute>
                                 }
                             />

@@ -18,28 +18,22 @@ const Dashboard = () => {
                 PROFIL
             </NavLink>
             <NavLink
-                to="/dashboard/stats"
-                className={({ isActive }) => (isActive ? "active-link" : "")}
-            >
-                STATS
-            </NavLink>
-            <NavLink
                 to="/dashboard/news"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
             >
                 NYHETER
             </NavLink>
             <NavLink
-                to="/dashboard/admin"
-                className={({ isActive }) => (isActive ? "active-link" : "")}
-            >
-                ADMIN
-            </NavLink>
-            <NavLink
                 to="/dashboard/applications"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
             >
                 ANSÖKNINGAR
+            </NavLink>
+            <NavLink
+                to="/dashboard/settings"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+                INSTÄLLNINGAR
             </NavLink>
         </nav>
     );
