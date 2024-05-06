@@ -39,11 +39,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const { username, isAdmin } = await userData;
 
             if (data.status === 200) {
-                // const sessionData = JSON.stringify({
-                //     username: username,
-                //     isAdmin: isAdmin,
-                // });
-                // sessionStorage.setItem("userSession", sessionData);
                 setIsAuthenticated(true);
                 setIsAdmin(isAdmin);
                 setUsername(username);
@@ -100,7 +95,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             if (response.ok) {
                 setIsAuthenticated(false);
-                // sessionStorage.removeItem("userSession");
                 setIsAdmin(false);
                 setUsername("");
                 toast.success(data.message);
