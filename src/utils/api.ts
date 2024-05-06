@@ -1,8 +1,8 @@
-interface FetchOptions {
-    method?: "GET" | "POST" | "PATCH" | "DELETE"; // HTTP method
-    body?: BodyInit | null; // Request body for POST, PATCH, etc.
-    headers?: HeadersInit; // Any custom headers
-    credentials?: RequestCredentials; // Include credentials
+export interface FetchOptions {
+    method?: "GET" | "POST" | "PATCH" | "DELETE";
+    body?: BodyInit | null;
+    headers?: HeadersInit;
+    credentials?: RequestCredentials;
 }
 
 export async function fetchData<T>(
@@ -21,9 +21,7 @@ export async function fetchData<T>(
                 ...options?.headers, // Spread any additional headers
             },
             body:
-                method !== "GET" && method !== "DELETE"
-                    ? JSON.stringify(options?.body)
-                    : null, // Include body if method is POST or PATCH
+                method !== "GET" && method !== "DELETE" ? options?.body : null, // Include body if method is POST or PATCH
             credentials: options?.credentials || "same-origin", // Include credentials as specified
         });
 
