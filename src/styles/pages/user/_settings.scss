@@ -1,0 +1,16 @@
+.settings-password {
+          margin-top: 2rem;
+          form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    color: $darker-text-color;
+                    width: 300px;
+                    input {
+                    font-size: large;
+                    height: 30px;
+                    border-radius: 20px;
+                    padding-left: 1rem;
+                    }
+          }
+}

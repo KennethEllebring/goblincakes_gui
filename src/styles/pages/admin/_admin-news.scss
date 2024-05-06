@@ -29,19 +29,21 @@
             .outer-card {
                 display: flex;
                 flex-direction: column;
-                align-items: end;
-                box-shadow: 0 0px 6px 0px #000;
+                align-items: start;
+                box-shadow: $shadow-light;
                 border-radius: 8px;
                 margin-bottom: 2rem;
                 padding: 5px;
                 .admin-news-settings {
                     display: flex;
+                    align-self: end;
                     gap: 5px;
                 }
                 .inner-card {
                     display: flex;
-                    align-items: center;
+                    align-items: start;
                     padding: 1rem;
+
                     .card-img-box {
                         display: flex;
                         align-items: center;

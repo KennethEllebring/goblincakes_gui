@@ -75,3 +75,35 @@
                     cursor: pointer;
           }
 }
+
+.login-button{
+          background-color: $accent-color;
+          color: $main-text-color;
+          font-size: large;
+          width: 200px;
+          height: 40px;
+          border-radius: 20px;
+          border: none;
+          cursor: pointer;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          &:hover {
+                    border: 2px solid black;
+          }            
+}
+
+.update-button{
+          background-color: $accent-color;
+          color: $main-text-color;
+          font-size: large;
+          width: 200px;
+          height: 40px;
+          border-radius: 20px;
+          border: none;
+          cursor: pointer;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          &:hover {
+                    border: 2px solid black;
+          }            
+}
