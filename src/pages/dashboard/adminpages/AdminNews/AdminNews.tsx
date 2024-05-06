@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "../../../../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 import newsImg from "../../../../assets/goblinLogo.webp";
 import AddEditNews from "./AddEditNews";
@@ -18,39 +19,62 @@ const NewsAdmin = () => {
     const [currentItem, setCurrentItem] = useState<NewsItem | null>(null);
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const data: NewsItem[] = await fetchData<NewsItem[]>(
-                    "http://localhost:5050/api/news/all",
-                    { method: "GET" },
-                );
-                setNewsItems(data);
-            } catch (error) {
-                console.error("Failed to fetch news:", error);
-            }
-        };
+    const fetchNews = async () => {
+        try {
+            const data: NewsItem[] = await fetchData<NewsItem[]>(
+                "http://localhost:5050/api/news/all",
+                { method: "GET" },
+            );
+            setNewsItems(data);
+        } catch (error) {
+            console.error("Failed to fetch news:", error);
+        }
+    };
 
+    useEffect(() => {
         fetchNews();
     }, []);
 
     const handleAdd = () => {
-        setCurrentItem({ newsImg: "", newsHeader: "", newsText: "", _id: "" }); // Prepare to add new item
+        setCurrentItem({ newsImg: "", newsHeader: "", newsText: "", _id: "" });
         setShowModal(true);
     };
 
     const handleEdit = (item: NewsItem) => {
-        setCurrentItem(item); // Set item to edit
+        setCurrentItem(item);
         setShowModal(true);
     };
 
-    const handleDelete = (id: string) => {
-        // Placeholder for delete functionality
-        console.log("clicked Delete", id);
+    const handleDelete = async (id: string) => {
+        try {
+            const response: Response = await fetch(
+                `http://localhost:5050/api/news/${id}`,
+                {
+                    method: "DELETE",
+                    credentials: "include",
+                },
+            );
+
+            if (response.ok) {
+                toast.success("Nyheten borttagen");
+                console.log("Newspost deleted successfully");
+                setNewsItems(newsItems.filter((item) => item._id !== id));
+            } else {
+                toast.error("Det gick inte att ta bort nyheten");
+                console.error(
+                    "Failed to delete newspost:",
+                    response.statusText,
+                );
+            }
+        } catch (error) {
+            toast.error("Det gick inte att ta bort nyheten");
+            console.error("Failed to delete news post:", error);
+        }
     };
 
-    const closeModal = () => {
+    const closeModal = async () => {
         setShowModal(false);
+        await fetchNews();
     };
 
     return (
@@ -62,6 +86,7 @@ const NewsAdmin = () => {
                 </div>
                 {showModal && currentItem && (
                     <AddEditNews
+                        id={currentItem._id}
                         newsHeader={currentItem.newsHeader}
                         newsText={currentItem.newsText}
                         newsImgUrl={currentItem.newsImg}
