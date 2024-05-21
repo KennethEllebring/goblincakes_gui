@@ -16,7 +16,7 @@ const News = () => {
         const fetchNews = async () => {
             try {
                 const data: NewsItem[] = await fetchData<NewsItem[]>(
-                    "http://localhost:5050/api/news/all",
+                    "https://goblincakes-server.vercel.app/api/news/all",
                     { method: "GET" },
                 );
                 data.sort(

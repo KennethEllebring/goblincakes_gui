@@ -16,8 +16,6 @@ const Settings = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isFormEnabled, setIsFormEnabled] = useState(false);
 
-    console.log(username);
-
     const handleEnableForm = () => {
         setIsFormEnabled(true);
     };
@@ -27,6 +25,7 @@ const Settings = () => {
         try {
             const response = await fetchData(
                 "http://localhost:5050/api/auth/edituser",
+                // "http://localhost:5050/api/auth/edituser", // vercel server
                 {
                     method: "PATCH",
                     headers: {
@@ -65,6 +64,7 @@ const Settings = () => {
         try {
             const response = await fetchData(
                 "http://localhost:5050/api/auth/changepassword",
+                // "http://localhost:5050/api/auth/changepassword", // vercel server
                 {
                     method: "PATCH",
                     headers: {
@@ -107,6 +107,7 @@ const Settings = () => {
         try {
             const response = await fetchData(
                 `http://localhost:5050/api/auth/removeuser/${username}`,
+                // `http://localhost:5050/api/auth/removeuser/${username}`, // vercel server
                 {
                     method: "DELETE",
                     headers: {

@@ -36,7 +36,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const checkAuth = async () => {
         try {
             const response = await fetch(
-                "http://localhost:5050/api/auth/check",
+                // "https://goblincakes-server.vercel.app/api/auth/check", // Vercel server
+                "http://localhost:5050/api/auth/check", // Local
                 {
                     credentials: "include",
                 },
@@ -70,6 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const login = async (username: string, password: string) => {
         try {
             const response = await fetch(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/auth/login",
                 {
                     method: "POST",
@@ -96,6 +98,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const logout = async () => {
         try {
             const response = await fetch(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/auth/logout",
                 {
                     method: "GET",

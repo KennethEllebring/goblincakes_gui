@@ -70,6 +70,7 @@ const UserProfile = () => {
         try {
             const response = await fetch(
                 `http://localhost:5050/api/blizzard/${realm}/${characterName}`,
+                // `http://localhost:5050/api/blizzard/${realm}/${characterName}`, // vercel server
                 {
                     method: "GET",
                 },

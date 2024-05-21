@@ -27,6 +27,7 @@ const ApplicationForm = () => {
     const fetchApplicationForm = async () => {
         try {
             const response = await fetchData<Question[]>(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/application/",
             );
             if (response) {
@@ -50,8 +51,8 @@ const ApplicationForm = () => {
     const handleFormSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            console.log(responses);
             const response = await fetch(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/application/submit",
                 {
                     method: "POST",

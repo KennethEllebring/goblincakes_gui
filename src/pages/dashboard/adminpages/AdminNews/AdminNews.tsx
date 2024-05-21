@@ -24,6 +24,7 @@ const NewsAdmin = () => {
         try {
             const data: NewsItem[] = await fetchData<NewsItem[]>(
                 "http://localhost:5050/api/news/all",
+                // "http://localhost:5050/api/news/all", // vercel server
                 { method: "GET" },
             );
             data.sort(
@@ -61,6 +62,7 @@ const NewsAdmin = () => {
         try {
             const response: Response = await fetch(
                 `http://localhost:5050/api/news/${id}`,
+                // `http://localhost:5050/api/news/${id}`, // vercel server
                 {
                     method: "DELETE",
                     credentials: "include",
@@ -69,7 +71,6 @@ const NewsAdmin = () => {
 
             if (response.ok) {
                 toast.success("Nyheten borttagen");
-                console.log("Newspost deleted successfully");
                 setNewsItems(newsItems.filter((item) => item._id !== id));
             } else {
                 toast.error("Det gick inte att ta bort nyheten");

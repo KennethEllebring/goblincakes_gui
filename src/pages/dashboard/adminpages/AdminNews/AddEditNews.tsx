@@ -45,6 +45,8 @@ const AddEditNews = ({
         const url = id
             ? `http://localhost:5050/api/news/${id}`
             : "http://localhost:5050/api/news";
+        // ? `http://localhost:5050/api/news/${id}` // vercel server
+        // : "http://localhost:5050/api/news"; // vercel server
 
         const method: "PATCH" | "POST" = id ? "PATCH" : "POST";
 

@@ -38,7 +38,6 @@ const Raid = () => {
 
     const fetchGuildProgress = async () => {
         try {
-            console.log("hämtar guild progress");
             const response = await fetch(
                 `http://localhost:5050/api/raiderio/guildprogress`,
                 {
@@ -84,8 +83,6 @@ const Raid = () => {
         fetchGuildProgress();
         fetchRaidLogs();
     }, []);
-
-    console.log(guildProgress);
 
     return (
         <div className="raid-wrapper">

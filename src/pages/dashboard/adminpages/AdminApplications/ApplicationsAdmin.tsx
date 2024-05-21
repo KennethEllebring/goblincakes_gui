@@ -31,6 +31,7 @@ const ApplicationsAdmin: React.FC = () => {
     const fetchApplicationForm = async () => {
         try {
             const response = await fetchData<Question[]>(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/application/",
             );
             if (response) {
@@ -44,6 +45,7 @@ const ApplicationsAdmin: React.FC = () => {
     const fetchApplications = async () => {
         try {
             const response = await fetchData<Application[]>(
+                // "http://localhost:5050/api/auth/check", // Vercel server
                 "http://localhost:5050/api/application/applications",
             );
             if (response) {
@@ -57,6 +59,7 @@ const ApplicationsAdmin: React.FC = () => {
     const handleDeleteApplication = async (id: string | null) => {
         if (!id) return;
         const endpoint = `http://localhost:5050/api/application/applications/${id}`;
+        // const endpoint = `http://localhost:5050/api/application/applications/${id}`; // vercel server
         const fetchOptions: FetchOptions = {
             method: "DELETE",
             credentials: "include",
@@ -112,6 +115,7 @@ const ApplicationsAdmin: React.FC = () => {
             (question) => question._id !== _id,
         );
         const endpoint = `http://localhost:5050/api/application/${_id}`;
+        // const endpoint = `http://localhost:5050/api/application/${_id}`; // vercel server
         const method = "DELETE";
 
         const fetchOptions: FetchOptions = {
@@ -121,13 +125,8 @@ const ApplicationsAdmin: React.FC = () => {
 
         try {
             const response = await fetchData(endpoint, fetchOptions);
-            console.log(response);
             if (response) {
                 toast.success("Tog bort formulär fråga");
-                console.log(
-                    "Application form updated successfully: ",
-                    response,
-                );
             }
         } catch (error) {
             toast.error("Det gick inte att spara formuläret");
@@ -141,6 +140,8 @@ const ApplicationsAdmin: React.FC = () => {
             questions.length > 0
                 ? "http://localhost:5050/api/application/update"
                 : "http://localhost:5050/api/application/create";
+        // ? "http://localhost:5050/api/application/update" // vercel server
+        // : "http://localhost:5050/api/application/create"; // vercel server
         const method = questions.length > 0 ? "PATCH" : "POST";
 
         const fetchOptions: FetchOptions = {
