@@ -1,5 +1,5 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../components/auth/authContext";
 
 interface PrivateRouteProps {
@@ -7,12 +7,18 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-    const { isAuthenticated, isLoading } = useAuth();
+    const { isAuthenticated, isLoading, checkAuth } = useAuth();
+    const location = useLocation();
+
+    useEffect(() => {
+        checkAuth();
+    }, [location, checkAuth]);
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    return isAuthenticated ? children : <Navigate to="/login" />;
+    return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;

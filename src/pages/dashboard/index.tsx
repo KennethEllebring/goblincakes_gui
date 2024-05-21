@@ -3,11 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../../components/auth/authContext";
 
 const Dashboard = () => {
-    const { logout, isAdmin } = useAuth();
-
-    const handleLogout = async () => {
-        await logout();
-    };
+    const { isAdmin } = useAuth();
 
     const AdminNav = () => (
         <nav className="dashboard-nav">
@@ -52,9 +48,6 @@ const Dashboard = () => {
             >
                 INSTÄLLNINGAR
             </NavLink>
-            <button onClick={handleLogout} className="logout-button">
-                LOGGA UT
-            </button>
         </nav>
     );
 

@@ -9,10 +9,11 @@ import {
     faPenToSquare,
     faLock,
     faLockOpen,
+    faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
-    const { username, logout } = useAuth();
+    const { logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async (
@@ -58,8 +59,17 @@ const NavBar = () => {
                     <FontAwesomeIcon icon={faPenToSquare} />
                     ANSÖKAN
                 </NavLink>
-                {username ? (
+                {isAuthenticated ? (
                     <>
+                        <NavLink
+                            to="/forum"
+                            className={({ isActive }) =>
+                                getActiveClass(isActive)
+                            }
+                        >
+                            <FontAwesomeIcon icon={faList} />
+                            FORUM
+                        </NavLink>
                         <NavLink
                             to="/dashboard"
                             className={({ isActive }) =>

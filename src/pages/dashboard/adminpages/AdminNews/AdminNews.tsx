@@ -12,6 +12,7 @@ interface NewsItem {
     newsHeader: string;
     newsText: string;
     _id: string;
+    created: string;
 }
 
 const NewsAdmin = () => {
@@ -25,6 +26,11 @@ const NewsAdmin = () => {
                 "http://localhost:5050/api/news/all",
                 { method: "GET" },
             );
+            data.sort(
+                (a, b) =>
+                    new Date(b.created).getTime() -
+                    new Date(a.created).getTime(),
+            );
             setNewsItems(data);
         } catch (error) {
             console.error("Failed to fetch news:", error);
@@ -36,7 +42,13 @@ const NewsAdmin = () => {
     }, []);
 
     const handleAdd = () => {
-        setCurrentItem({ newsImg: "", newsHeader: "", newsText: "", _id: "" });
+        setCurrentItem({
+            newsImg: "",
+            newsHeader: "",
+            newsText: "",
+            _id: "",
+            created: "",
+        });
         setShowModal(true);
     };
 

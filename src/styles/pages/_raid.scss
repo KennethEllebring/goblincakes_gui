@@ -5,24 +5,76 @@
           margin-top: 2rem;
           margin-bottom: 4rem;
           .raid {
-              display: flex;
-              justify-content: space-around;
-              width: 80%;
-              background-color: $body-color;
-              box-shadow: $shadow-strong;
-              padding-bottom: 2rem;
-              .progress {
-                  width: 300px;
-                  background-color: $light-body-color;
-                  border-radius: 4px;
-                  .progress-bar {
-                      height: 20px;
-                      background-color: $accent-color;
-                      border-radius: 4px;
-                      text-align: center;
-                      line-height: 20px;
-                      color: $main-text-color;
-                  }
-              }
-          }
-}
+            text-align: center;
+            width: 80%;
+            background-color: $body-color;
+            box-shadow: $shadow-strong;
+            padding-bottom: 2rem;
+            .raid-progress-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+                margin-inline: 2rem;
+                .raid-progress {
+                    margin-bottom: 2rem;
+                    .progress-bar {
+                    width: 400px;
+                    background-color: #e0e0e0;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    margin-bottom: 1rem;
+                    .bar {
+                        height: 25px;
+                        color: #fff;
+                        text-align: center;
+                        line-height: 25px;
+                        &.normal {
+                            background-color: #4caf50;
+                        }
+                        
+                        &.heroic {
+                            background-color: #ff9800;
+                        }
+                        
+                        &.mythic {
+                            background-color: #f44336;
+                        }
+                    }
+                }
+            }
+        }
+              .logs {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                  .post {
+                      display: flex;
+                      justify-content: center;
+                      width: 1000px;
+                      .log-link {                      
+                          display: flex;
+                          gap: 1rem;
+                          color: $main-text-color;
+                          text-decoration: $link-decoration;
+                          cursor: pointer;
+                          transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+                          &:hover {
+                              background-color: $accent-color;
+                              box-shadow: 0 0 20px $accent-color;
+                              transform: translateY(-2px);
+                            }
+                            &:active {
+                                transform: translateY(1px);
+                                box-shadow: 0 0 15px #3C763D;
+                            }
+                            &.active-link {
+                                color: #fff;
+                                background-color: $accent-color;
+                                box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+                            }                                           
+                        }
+                    }
+                }
+            }
+        }

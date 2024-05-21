@@ -1,0 +1,88 @@
+.like-highlight {
+    padding-right: 8px;
+    cursor: pointer;
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+.comment-highlight {
+    &:hover {
+        cursor: pointer;
+        color: $accent-color;
+    }
+}
+
+.forum-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    .forum {
+        width: 80%;
+        background-color: $body-color;
+        box-shadow: $shadow-strong; 
+        gap: 2rem;
+        margin-bottom: 10rem;
+        .add-category{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 1rem;
+            margin-top: 2rem;
+            margin-right: 1rem;
+        }
+        .forum-body {
+            padding: 1rem;
+            .forum-headers {
+                display: flex;
+                justify-content: space-between;
+                background-color: $main-body-color;
+                padding: 1rem;
+            }
+            .forum-post {
+                height: 115px;
+                .forum-content {
+                    display: flex;
+                    color: $main-text-color;
+                    justify-content: space-between;
+                    height: 115px;
+                    &:hover {
+                        background-color: $main-body-color;
+                        cursor: pointer;
+                    }
+                    .forum-img-text-wrapper {
+                        display: flex;
+                        img {
+                            height: 115px;
+                            margin-right: 2rem;
+                        }
+                        .forum-text {
+                            padding-right: 2rem;
+                            max-width: 900px;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    .forum-stats-updated-wrapper {
+                        display: flex;
+                        gap: 5rem;
+                        .forum-stats {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        }
+                        .forum-updated {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            margin-right: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

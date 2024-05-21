@@ -24,13 +24,16 @@
 /////////// Pages ///////////
 // Admin
 @import "pages/admin/admin-news";
+@import "pages/admin//admin-application";
 // User
+@import "pages/user/profile";
 @import "pages/user/settings";
 // Main
 @import "pages/home";
 @import "pages/team";
 @import "pages/raid";
 @import "pages/application";
+@import "pages/forum";
 @import "pages/login";
 @import "pages/dashboard";
 @import "pages/notFound";

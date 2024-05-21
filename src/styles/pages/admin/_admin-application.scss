@@ -1,0 +1,69 @@
+.form-wrapper {
+          padding-bottom: 2rem;
+          .application-card{
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    padding-top: 1rem;
+                    padding-inline: 1rem;
+                    margin-bottom: 1rem;
+                }
+                
+                .application-row {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 0.5rem;
+                    a {
+                              text-decoration: none;
+                              cursor: pointer;
+                              color: blue;
+                              &:hover {
+                                        color: $accent-color;
+                              }
+                    }
+                }
+          h1 {
+                    padding-top: 2rem;
+                    text-align: center;
+          }
+          .form-settings {
+                    display: flex;
+                    margin-bottom: 1rem;
+                    justify-content: space-between;
+          }
+}
+
+.form-buttons {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+}
+
+.user-preview {
+          color: $darker-text-color;
+          text-align: center;
+          .preview-form {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 1rem;
+                    color: $darker-text-color;
+                    .preview-label {
+                              color: $accent-color;
+                              font-size: large;
+                              font-weight: 700;
+                    }
+                    .preview-inputs {
+                              justify-content: center;
+                              display: flex;
+                              flex-wrap: wrap;
+                              gap: 2rem;
+                              width: 400px;
+                              .preview-text-input{
+                                        font-size: large;
+                                        height: 30px;
+                              }
+                    }
+          }
+}

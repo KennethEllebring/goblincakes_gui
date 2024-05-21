@@ -1,16 +1,33 @@
-.settings-password {
-          margin-top: 2rem;
-          form {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                    color: $darker-text-color;
-                    width: 300px;
-                    input {
-                    font-size: large;
-                    height: 30px;
-                    border-radius: 20px;
-                    padding-left: 1rem;
+.settings-wrapper {
+          padding-bottom: 5rem;
+          .settings {
+                    form {
+                              display: flex;
+                              flex-direction: column;
+                              gap: 0.5rem;
+                              color: $darker-text-color;
+                              width: 300px;
+                              input {
+                                        font-size: large;
+                                        height: 30px;
+                                        border-radius: 20px;
+                                        padding-left: 1rem;
+                              }
                     }
           }
+}
+
+.settings-header-character {
+          margin-top: 2rem;
+          padding-top: 2rem;
+          margin-bottom: 0;
+}
+.settings-info-character {
+          margin-top: 0;
+          color: $darker-text-color;
+          font-size: small;
+}
+.settings-enable-button {
+          margin-bottom: 1rem;
+
 }

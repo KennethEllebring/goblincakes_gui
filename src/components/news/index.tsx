@@ -7,6 +7,7 @@ interface NewsItem {
     newsImg?: string;
     newsHeader: string;
     newsText: string;
+    created: string;
 }
 const News = () => {
     const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
@@ -17,6 +18,11 @@ const News = () => {
                 const data: NewsItem[] = await fetchData<NewsItem[]>(
                     "http://localhost:5050/api/news/all",
                     { method: "GET" },
+                );
+                data.sort(
+                    (a, b) =>
+                        new Date(b.created).getTime() -
+                        new Date(a.created).getTime(),
                 );
                 setNewsItems(data);
             } catch (error) {

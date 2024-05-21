@@ -12,11 +12,14 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import Dashboard from "./pages/dashboard";
 import Profile from "./pages/dashboard/userpages/UserProfile";
 import News from "./pages/dashboard/adminpages/AdminNews/AdminNews";
-import Applications from "./pages/dashboard/adminpages/AdminApplications";
+import Applications from "./pages/dashboard/adminpages/AdminApplications/ApplicationsAdmin";
 import NotFound from "./pages/notfound/NotFound";
 import "./styles/main.scss";
 import "react-toastify/dist/ReactToastify.css";
 import Settings from "./pages/dashboard/userpages/UserSettings";
+import Forum from "./pages/forum";
+import Topics from "./pages/forum/topics/topics";
+import Posts from "./pages/forum/posts/posts";
 
 const App = () => {
     return (
@@ -41,7 +44,30 @@ const App = () => {
                         <Route path="/raid" element={<Raid />} />
                         <Route path="/application" element={<Application />} />
                         <Route path="/login" element={<Login />} />
-
+                        <Route
+                            path="/forum"
+                            element={
+                                <PrivateRoute>
+                                    <Forum />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/forum/:category"
+                            element={
+                                <PrivateRoute>
+                                    <Topics />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/forum/:category/:topic"
+                            element={
+                                <PrivateRoute>
+                                    <Posts />
+                                </PrivateRoute>
+                            }
+                        />
                         <Route
                             path="/dashboard"
                             element={
