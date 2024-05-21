@@ -17,7 +17,11 @@ const News = () => {
             try {
                 const data: NewsItem[] = await fetchData<NewsItem[]>(
                     "https://goblincakes-server.vercel.app/api/news/all",
-                    { method: "GET" },
+                    {
+                        method: "GET",
+                        mode: "cors",
+                        credentials: "include",
+                    },
                 );
                 data.sort(
                     (a, b) =>
