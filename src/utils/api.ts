@@ -3,7 +3,7 @@ export interface FetchOptions {
     body?: BodyInit | null;
     headers?: HeadersInit;
     credentials?: RequestCredentials;
-    mode?: RequestMode; // Include mode in the options
+    mode?: RequestMode;
 }
 
 export async function fetchData<T>(
@@ -21,8 +21,8 @@ export async function fetchData<T>(
             },
             body:
                 method !== "GET" && method !== "DELETE" ? options?.body : null,
-            credentials: options?.credentials || "same-origin",
-            mode: options?.mode || "cors", // Set the mode to cors
+            credentials: options?.credentials || "include",
+            mode: options?.mode || "cors",
         });
 
         if (!response.ok) {

@@ -17,6 +17,7 @@ const News = () => {
             try {
                 const data: NewsItem[] = await fetchData<NewsItem[]>(
                     "https://goblincakes-server.vercel.app/api/news/all",
+                    // "http://localhost:5050/api/news/all",
                     {
                         method: "GET",
                         mode: "cors",
