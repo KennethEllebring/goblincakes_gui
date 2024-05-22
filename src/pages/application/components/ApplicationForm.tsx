@@ -27,8 +27,8 @@ const ApplicationForm = () => {
     const fetchApplicationForm = async () => {
         try {
             const response = await fetchData<Question[]>(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/application/",
+                "https://goblincakes-server.vercel.app/api/application/",
+                // "http://localhost:5050/api/application/",
             );
             if (response) {
                 setQuestions(response);
@@ -52,13 +52,15 @@ const ApplicationForm = () => {
         event.preventDefault();
         try {
             const response = await fetch(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/application/submit",
+                "https://goblincakes-server.vercel.app/api/application/submit",
+                // "http://localhost:5050/api/application/submit",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    mode: "cors",
+                    credentials: "include",
                     body: JSON.stringify(responses),
                 },
             );

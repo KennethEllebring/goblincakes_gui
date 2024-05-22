@@ -23,9 +23,9 @@ const NewsAdmin = () => {
     const fetchNews = async () => {
         try {
             const data: NewsItem[] = await fetchData<NewsItem[]>(
-                "http://localhost:5050/api/news/all",
-                // "http://localhost:5050/api/news/all", // vercel server
-                { method: "GET" },
+                "https://goblincakes-server.vercel.app/api/news/all",
+                // "http://localhost:5050/api/news/all",
+                { method: "GET", mode: "cors", credentials: "include" },
             );
             data.sort(
                 (a, b) =>

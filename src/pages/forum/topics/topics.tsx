@@ -56,7 +56,12 @@ const Topics: React.FC = () => {
     const fetchTopics = useCallback(async () => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/topics/${category_id}`,
+                `https://goblincakes-server.vercel.app/api/forum/topics/${category_id}`,
+                // `http://localhost:5050/api/forum/topics/${category_id}`,
+                {
+                    credentials: "include",
+                    mode: "cors",
+                },
             );
             if (!response.ok) {
                 throw new Error("Failed to fetch topics");
@@ -103,9 +108,12 @@ const Topics: React.FC = () => {
 
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/topic/${category_id}/${topicId}`,
+                `https://goblincakes-server.vercel.app/api/forum/topic/${category_id}/${topicId}`,
+                // `http://localhost:5050/api/forum/topic/${category_id}/${topicId}`,
                 {
                     method: "DELETE",
+                    credentials: "include",
+                    mode: "cors",
                 },
             );
 
@@ -129,8 +137,10 @@ const Topics: React.FC = () => {
         topicId?: string,
     ) => {
         const endpoint = topicId
-            ? `http://localhost:5050/api/forum/topic/${category_id}/${topicId}`
-            : "http://localhost:5050/api/forum/topic";
+            ? `https://goblincakes-server.vercel.app/api/forum/topic/${category_id}/${topicId}`
+            : "https://goblincakes-server.vercel.app/api/forum/topic";
+        // ? `http://localhost:5050/api/forum/topic/${category_id}/${topicId}`
+        // : "http://localhost:5050/api/forum/topic";
         const method = topicId ? "PATCH" : "POST";
 
         try {
@@ -139,6 +149,8 @@ const Topics: React.FC = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
+                mode: "cors",
                 body: JSON.stringify({
                     topic_title: topicTitle,
                     topic_text: topicText,

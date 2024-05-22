@@ -53,7 +53,12 @@ const Posts: React.FC = () => {
     const fetchPosts = async () => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/posts/${topicId}`,
+                `https://goblincakes-server.vercel.app/api/forum/posts/${topicId}`,
+                // `http://localhost:5050/api/forum/posts/${topicId}`,
+                {
+                    mode: "cors",
+                    credentials: "include",
+                },
             );
             if (!response.ok) {
                 throw new Error("Failed to fetch posts");
@@ -86,10 +91,12 @@ const Posts: React.FC = () => {
 
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/post/${topicId}/${postId}`,
+                `https://goblincakes-server.vercel.app/api/forum/post/${topicId}/${postId}`,
+                // `http://localhost:5050/api/forum/post/${topicId}/${postId}`,
                 {
                     method: "DELETE",
                     credentials: "include",
+                    mode: "cors",
                 },
             );
 
@@ -113,8 +120,10 @@ const Posts: React.FC = () => {
         postId?: string,
     ) => {
         const endpoint = postId
-            ? `http://localhost:5050/api/forum/post/${topicId}/${postId}`
-            : `http://localhost:5050/api/forum/post/${topicId}`;
+            ? `https://goblincakes-server.vercel.app/api/forum/post/${topicId}/${postId}`
+            : `https://goblincakes-server.vercel.app/api/forum/post/${topicId}`;
+        // ? `http://localhost:5050/api/forum/post/${topicId}/${postId}`
+        // : `http://localhost:5050/api/forum/post/${topicId}`;
         const method = postId ? "PATCH" : "POST";
 
         try {
@@ -124,6 +133,7 @@ const Posts: React.FC = () => {
                     "Content-Type": "application/json",
                 },
                 credentials: "include",
+                mode: "cors",
                 body: JSON.stringify({
                     post_title: postTitle,
                     post_text: postText,
@@ -145,13 +155,15 @@ const Posts: React.FC = () => {
     const handleLike = async (postId: string) => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/post/like/${topicId}/${postId}`,
+                `https://goblincakes-server.vercel.app/api/forum/post/like/${topicId}/${postId}`,
+                // `http://localhost:5050/api/forum/post/like/${topicId}/${postId}`,
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     credentials: "include",
+                    mode: "cors",
                     body: JSON.stringify({ username }),
                 },
             );
@@ -173,13 +185,15 @@ const Posts: React.FC = () => {
     const handleCommentSubmit = async (commentText: string, postId: string) => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/post/comment/${topicId}/${postId}`,
+                `https://goblincakes-server.vercel.app/api/forum/post/comment/${topicId}/${postId}`,
+                // `http://localhost:5050/api/forum/post/comment/${topicId}/${postId}`,
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     credentials: "include",
+                    mode: "cors",
                     body: JSON.stringify({
                         comment_text: commentText,
                         username,
@@ -200,13 +214,15 @@ const Posts: React.FC = () => {
     const handleDeleteComment = async (postId: string, commentId: string) => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/post/comment/${topicId}/${postId}/${commentId}`,
+                `https://goblincakes-server.vercel.app/api/forum/post/comment/${topicId}/${postId}/${commentId}`,
+                // `http://localhost:5050/api/forum/post/comment/${topicId}/${postId}/${commentId}`,
                 {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     credentials: "include",
+                    mode: "cors",
                 },
             );
 

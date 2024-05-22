@@ -31,8 +31,8 @@ const ApplicationsAdmin: React.FC = () => {
     const fetchApplicationForm = async () => {
         try {
             const response = await fetchData<Question[]>(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/application/",
+                "https://goblincakes-server.vercel.app/api/application/",
+                // "http://localhost:5050/api/application/",
             );
             if (response) {
                 setQuestions(response);
@@ -45,8 +45,8 @@ const ApplicationsAdmin: React.FC = () => {
     const fetchApplications = async () => {
         try {
             const response = await fetchData<Application[]>(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/application/applications",
+                "https://goblincakes-server.vercel.app/api/application/applications",
+                // "http://localhost:5050/api/application/applications",
             );
             if (response) {
                 setApplications(response);
@@ -58,8 +58,8 @@ const ApplicationsAdmin: React.FC = () => {
 
     const handleDeleteApplication = async (id: string | null) => {
         if (!id) return;
-        const endpoint = `http://localhost:5050/api/application/applications/${id}`;
-        // const endpoint = `http://localhost:5050/api/application/applications/${id}`; // vercel server
+        const endpoint = `https://goblincakes-server.vercel.app/api/application/applications/${id}`;
+        // const endpoint = `http://localhost:5050/api/application/applications/${id}`;
         const fetchOptions: FetchOptions = {
             method: "DELETE",
             credentials: "include",
@@ -114,8 +114,8 @@ const ApplicationsAdmin: React.FC = () => {
         const updatedQuestions = questions.filter(
             (question) => question._id !== _id,
         );
-        const endpoint = `http://localhost:5050/api/application/${_id}`;
-        // const endpoint = `http://localhost:5050/api/application/${_id}`; // vercel server
+        const endpoint = `https://goblincakes-server.vercel.app/api/application/${_id}`;
+        // const endpoint = `http://localhost:5050/api/application/${_id}`;
         const method = "DELETE";
 
         const fetchOptions: FetchOptions = {
@@ -138,10 +138,10 @@ const ApplicationsAdmin: React.FC = () => {
     const handleSubmit = async () => {
         const endpoint =
             questions.length > 0
-                ? "http://localhost:5050/api/application/update"
-                : "http://localhost:5050/api/application/create";
-        // ? "http://localhost:5050/api/application/update" // vercel server
-        // : "http://localhost:5050/api/application/create"; // vercel server
+                ? "https://goblincakes-server.vercel.app/api/application/update"
+                : "https://goblincakes-server.vercel.app/api/application/create";
+        // ? "http://localhost:5050/api/application/update"
+        // : "http://localhost:5050/api/application/create";
         const method = questions.length > 0 ? "PATCH" : "POST";
 
         const fetchOptions: FetchOptions = {

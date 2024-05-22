@@ -43,16 +43,17 @@ const AddEditNews = ({
         };
 
         const url = id
-            ? `http://localhost:5050/api/news/${id}`
-            : "http://localhost:5050/api/news";
-        // ? `http://localhost:5050/api/news/${id}` // vercel server
-        // : "http://localhost:5050/api/news"; // vercel server
+            ? `https://goblincakes-server.vercel.app/api/news/${id}`
+            : "https://goblincakes-server.vercel.app/api/news";
+        // ? `http://localhost:5050/api/news/${id}`
+        // : "http://localhost:5050/api/news";
 
         const method: "PATCH" | "POST" = id ? "PATCH" : "POST";
 
         const fetchOptions: FetchOptions = {
             method: method,
             body: JSON.stringify(payload),
+            mode: "cors",
             credentials: "include",
         };
 

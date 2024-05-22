@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import raiderIoLogo from "../../assets/raideriologo.png";
+import warcraftLogs from "../../assets/warcraftlogslogo.png";
 
 interface WarcraftlogsResponse {
     id: string;
@@ -39,9 +41,12 @@ const Raid = () => {
     const fetchGuildProgress = async () => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/raiderio/guildprogress`,
+                // `http://localhost:5050/api/raiderio/guildprogress`,
+                `https://goblincakes-server.vercel.app/api/raiderio/guildprogress`,
                 {
                     method: "GET",
+                    mode: "cors",
+                    credentials: "include",
                 },
             );
 
@@ -59,9 +64,12 @@ const Raid = () => {
     const fetchRaidLogs = async () => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/warcraftlogs/logs`,
+                // `http://localhost:5050/api/warcraftlogs/logs`,
+                `https://goblincakes-server.vercel.app/api/warcraftlogs/logs`,
                 {
                     method: "GET",
+                    mode: "cors",
+                    credentials: "include",
                 },
             );
 
@@ -140,6 +148,29 @@ const Raid = () => {
                                 </div>
                             ))}
                 </div>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        paddingBottom: "1rem",
+                        borderBottom: "2px solid silver",
+                    }}
+                >
+                    <p>Powered by:</p>
+                    <a
+                        href="https://raider.io/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img
+                            style={{ height: "30px" }}
+                            src={raiderIoLogo}
+                            alt="raiderIO logo"
+                        />
+                    </a>
+                </div>
                 <h2>LOGS</h2>
                 <div className="logs">
                     {raidLogs.map((raidlog, index) => (
@@ -161,6 +192,29 @@ const Raid = () => {
                             </a>
                         </div>
                     ))}
+                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        paddingTop: "2rem",
+                        paddingBottom: "1rem",
+                    }}
+                >
+                    <p>Powered by:</p>
+                    <a
+                        href="https://www.warcraftlogs.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img
+                            style={{ height: "30px" }}
+                            src={warcraftLogs}
+                            alt="raiderIO logo"
+                        />
+                    </a>
                 </div>
             </div>
         </div>

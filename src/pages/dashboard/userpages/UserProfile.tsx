@@ -69,10 +69,12 @@ const UserProfile = () => {
     const fetchCharacter = async () => {
         try {
             const response = await fetch(
-                `http://localhost:5050/api/blizzard/${realm}/${characterName}`,
-                // `http://localhost:5050/api/blizzard/${realm}/${characterName}`, // vercel server
+                `https://goblincakes-server.vercel.app/api/blizzard/${realm}/${characterName}`,
+                // `http://localhost:5050/api/blizzard/${realm}/${characterName}`,
                 {
                     method: "GET",
+                    mode: "cors",
+                    credentials: "include",
                 },
             );
 

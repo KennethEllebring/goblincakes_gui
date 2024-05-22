@@ -36,9 +36,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const checkAuth = async () => {
         try {
             const response = await fetch(
-                // "https://goblincakes-server.vercel.app/api/auth/check", // Vercel server
-                "http://localhost:5050/api/auth/check", // Local
+                "https://goblincakes-server.vercel.app/api/auth/check",
+                // "http://localhost:5050/api/auth/check",
                 {
+                    method: "GET",
+                    mode: "cors",
                     credentials: "include",
                 },
             );
@@ -71,12 +73,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const login = async (username: string, password: string) => {
         try {
             const response = await fetch(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/auth/login",
+                "https://goblincakes-server.vercel.app/api/auth/login",
+                // "http://localhost:5050/api/auth/login",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     credentials: "include",
+                    mode: "cors",
                     body: JSON.stringify({ username, password }),
                 },
             );
@@ -98,10 +101,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const logout = async () => {
         try {
             const response = await fetch(
-                // "http://localhost:5050/api/auth/check", // Vercel server
-                "http://localhost:5050/api/auth/logout",
+                "https://goblincakes-server.vercel.app/api/auth/logout",
+                // "http://localhost:5050/api/auth/logout",
                 {
                     method: "GET",
+                    mode: "cors",
                     credentials: "include",
                 },
             );

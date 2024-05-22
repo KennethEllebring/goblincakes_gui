@@ -24,13 +24,14 @@ const Settings = () => {
         e.preventDefault();
         try {
             const response = await fetchData(
-                "http://localhost:5050/api/auth/edituser",
-                // "http://localhost:5050/api/auth/edituser", // vercel server
+                "https://goblincakes-server.vercel.app/api/auth/edituser",
+                // "http://localhost:5050/api/auth/edituser",
                 {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    mode: "cors",
                     credentials: "include",
                     body: JSON.stringify({
                         username: username,
@@ -63,13 +64,14 @@ const Settings = () => {
 
         try {
             const response = await fetchData(
-                "http://localhost:5050/api/auth/changepassword",
-                // "http://localhost:5050/api/auth/changepassword", // vercel server
+                "https://goblincakes-server.vercel.app/api/auth/changepassword",
+                // "http://localhost:5050/api/auth/changepassword",
                 {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    mode: "cors",
                     credentials: "include",
                     body: JSON.stringify({
                         username: username,
@@ -106,13 +108,14 @@ const Settings = () => {
         }
         try {
             const response = await fetchData(
-                `http://localhost:5050/api/auth/removeuser/${username}`,
-                // `http://localhost:5050/api/auth/removeuser/${username}`, // vercel server
+                `https://goblincakes-server.vercel.app/api/auth/removeuser/${username}`,
+                // `http://localhost:5050/api/auth/removeuser/${username}`,
                 {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    mode: "cors",
                     credentials: "include",
                 },
             );
@@ -185,9 +188,6 @@ const Settings = () => {
                             disabled={!isFormEnabled}
                         />
                     </div>
-                    {errorMessage && (
-                        <div style={{ color: "red" }}>{errorMessage}</div>
-                    )}
                     <button
                         type="submit"
                         className="update-button"

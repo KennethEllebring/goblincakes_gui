@@ -66,7 +66,14 @@ const Forum: React.FC = () => {
     const fetchCategories = async () => {
         setLoading(true);
         try {
-            const response = await fetch("http://localhost:5050/api/forum/all");
+            const response = await fetch(
+                "https://goblincakes-server.vercel.app/api/forum/all",
+                // http://localhost:5050/api/forum/all
+                {
+                    mode: "cors",
+                    credentials: "include",
+                },
+            );
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -125,8 +132,10 @@ const Forum: React.FC = () => {
         categoryId?: string,
     ) => {
         const endpoint = originalCategoryTitle
-            ? `http://localhost:5050/api/forum/category/${categoryId}`
-            : "http://localhost:5050/api/forum/create";
+            ? `https://goblincakes-server.vercel.app/api/forum/category/${categoryId}`
+            : "https://goblincakes-server.vercel.app/api/forum/create";
+        // ? `http://localhost:5050/api/forum/category/${categoryId}`
+        // : "http://localhost:5050/api/forum/create";
         const method = originalCategoryTitle ? "PATCH" : "POST";
 
         try {
@@ -135,6 +144,8 @@ const Forum: React.FC = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
+                mode: "cors",
                 body: JSON.stringify({
                     forum_title: forumTitle,
                     category_title: categoryTitle,
@@ -160,13 +171,15 @@ const Forum: React.FC = () => {
         event.stopPropagation();
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/title/${_id}`,
+                `https://goblincakes-server.vercel.app/api/forum/title/${_id}`,
+                // `http://localhost:5050/api/forum/title/${_id}`,
                 {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     credentials: "include",
+                    mode: "cors",
                 },
             );
 
@@ -189,13 +202,15 @@ const Forum: React.FC = () => {
         event.stopPropagation();
         try {
             const response = await fetch(
-                `http://localhost:5050/api/forum/category/${category_id}`,
+                `https://goblincakes-server.vercel.app/api/forum/category/${category_id}`,
+                // `http://localhost:5050/api/forum/category/${category_id}`,
                 {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     credentials: "include",
+                    mode: "cors",
                 },
             );
 

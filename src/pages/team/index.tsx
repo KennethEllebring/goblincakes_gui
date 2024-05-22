@@ -5,6 +5,7 @@ import dpsBadge from "../../assets/dpsbadge.jpg";
 import healerBadge from "../../assets/healerbadge.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faUserShield } from "@fortawesome/free-solid-svg-icons";
+import blizzardLogo from "../../assets/blizzardlogo.png";
 
 interface BlizzardResponse {
     character: Character;
@@ -49,44 +50,63 @@ const Team = () => {
     const [loading, setLoading] = useState(true);
     const [dataFetched, setDataFetched] = useState(false);
 
-    const fetchData = async () => {
+    const fetchGuildData = async () => {
         try {
-            const [guildResponse, specsResponse] = await Promise.all([
-                fetch(`http://localhost:5050/api/blizzard/guild`),
-                fetch(`http://localhost:5050/api/blizzard/info`),
-            ]);
-
-            if (guildResponse.ok && specsResponse.ok) {
-                const guildData: BlizzardResponse[] =
-                    await guildResponse.json();
-                const specsData: Info[] = await specsResponse.json();
-
-                const extendedData = guildData.map((member) => ({
-                    ...member,
-                    characterSpec: "Unknown",
-                    characterName: member.character.name,
-                    twitch: undefined,
-                })) as ExtendedBlizzardResponse[];
-
-                setRaidTeam(extendedData);
-                setInfos(specsData);
-                setDataFetched(true);
-            } else {
-                throw new Error("Failed to fetch data");
-            }
+            const response = await fetch(
+                // `http://localhost:5050/api/blizzard/guild`,
+                `https://goblincakes-server.vercel.app/api/blizzard/guild`,
+                {
+                    method: "GET",
+                    mode: "cors",
+                    credentials: "include",
+                },
+            );
+            if (!response.ok) throw new Error("Failed to fetch guild data");
+            const guildData: BlizzardResponse[] = await response.json();
+            const extendedData = guildData.map((member) => ({
+                ...member,
+                characterSpec: "Unknown",
+                characterName: member.character.name,
+                twitch: undefined,
+            })) as ExtendedBlizzardResponse[];
+            setRaidTeam(extendedData);
         } catch (error) {
-            console.error("Failed to fetch data:", error);
+            console.error("Failed to fetch guild data:", error);
+        }
+    };
+
+    const fetchInfoData = async () => {
+        try {
+            const response = await fetch(
+                // `http://localhost:5050/api/blizzard/info`,
+                `https://goblincakes-server.vercel.app/api/blizzard/info`,
+                {
+                    method: "GET",
+                    mode: "cors",
+                    credentials: "include",
+                },
+            );
+            if (!response.ok) throw new Error("Failed to fetch info data");
+            const specsData: Info[] = await response.json();
+            setInfos(specsData);
+            setDataFetched(true);
+        } catch (error) {
+            console.error("Failed to fetch info data:", error);
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
+        const fetchData = async () => {
+            await fetchGuildData();
+            await fetchInfoData();
+        };
         fetchData();
     }, []);
 
     useEffect(() => {
-        if (dataFetched) {
+        if (dataFetched && infos.length > 0) {
             const updatedRaidTeam = raidTeam.map((member) => {
                 const characterName = member.character.name;
                 const specInfo = infos.find(
@@ -109,12 +129,11 @@ const Team = () => {
                 return specA.localeCompare(specB);
             });
 
-            // Only update the state if the sorted data is different from the current raid team
             if (JSON.stringify(sortedData) !== JSON.stringify(raidTeam)) {
                 setRaidTeam(sortedData);
             }
         }
-    }, [dataFetched, infos]); // Dependencies: dataFetched and infos
+    }, [dataFetched, infos, raidTeam]);
 
     const getClass = (id: number): string => {
         switch (id) {
@@ -234,7 +253,10 @@ const Team = () => {
                                             })(),
                                         }}
                                     >
-                                        {`${Math.floor(member.characterMythicData.current_mythic_rating.rating)}`}
+                                        {`${Math.floor(
+                                            member.characterMythicData
+                                                .current_mythic_rating.rating,
+                                        )}`}
                                     </p>
                                 </div>
                                 <div className="links">
@@ -277,6 +299,30 @@ const Team = () => {
                     {renderTeamSection("Tanks", tanks)}
                     {renderTeamSection("Healers", healers)}
                     {renderTeamSection("DPS", dps)}
+                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        paddingTop: "2rem",
+                        paddingBottom: "1rem",
+                        borderTop: "2px solid silver",
+                    }}
+                >
+                    <p>Powered by:</p>
+                    <a
+                        href="https://www.blizzard.com/en-us/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img
+                            style={{ height: "80px" }}
+                            src={blizzardLogo}
+                            alt="raiderIO logo"
+                        />
+                    </a>
                 </div>
             </div>
         </div>
