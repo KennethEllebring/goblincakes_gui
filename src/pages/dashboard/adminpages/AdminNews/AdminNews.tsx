@@ -61,8 +61,8 @@ const NewsAdmin = () => {
     const handleDelete = async (id: string) => {
         try {
             const response: Response = await fetch(
-                `http://localhost:5050/api/news/${id}`,
-                // `http://localhost:5050/api/news/${id}`, // vercel server
+                `https://goblincakes-server.vercel.app/api/news/${id}`,
+                // `http://localhost:5050/api/news/${id}`,
                 {
                     method: "DELETE",
                     credentials: "include",
